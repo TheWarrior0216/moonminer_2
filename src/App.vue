@@ -1,6 +1,6 @@
 <!-- JS -->
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from './AppState.js'
 import { goldService } from "./services/GoldService.js";
 const gold = computed(() => AppState.gold)
@@ -15,6 +15,9 @@ function buyItem(itemName) {
 function buyItems(itemName) {
   goldService.buyItems(itemName)
 }
+onMounted(()=> {
+  setInterval(goldService.autoGold, 2000)
+})
 
 </script>
 

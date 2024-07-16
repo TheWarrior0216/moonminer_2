@@ -24,6 +24,11 @@ class GoldService {
     AppState.gold += totalGold
     return AppState.gold
   }
-
+  autoGold() {
+    let totalGold = 0
+    AppState.autoUpgrades.forEach(upgrade => totalGold += (upgrade.multiplier * upgrade.quantity))
+    AppState.gold += totalGold
+    return AppState.gold
+  }
 }
 export const goldService = new GoldService()
